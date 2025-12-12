@@ -1,0 +1,63 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.sykmm.realestate'
+    compileSdk 34
+
+    def gitCommitHash = "git rev-parse HEAD".execute().text.trim()
+    def shortCommitHash = "git rev-parse --short HEAD".execute().text.trim()
+
+
+    defaultConfig {
+        applicationId "com.sykmm.realestate"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    signingConfigs {
+        release {
+        storeFile file('signkey')
+            storePassword '123456'
+            keyAlias 'key0'
+            keyPassword '123456'
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
+        }
+        debug {
+            signingConfig signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation "androidx.appcompat:appcompat:1.7.1"
+    implementation "com.google.android.material:material:1.13.0"
+    implementation "androidx.constraintlayout:constraintlayout:2.2.1"
+    implementation 'com.github.bumptech.glide:glide:5.0.5'
+    implementation 'com.squareup.retrofit2:retrofit:3.0.0'
+    implementation 'com.squareup.retrofit2:converter-gson:3.0.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:5.0.5'
+
+}
