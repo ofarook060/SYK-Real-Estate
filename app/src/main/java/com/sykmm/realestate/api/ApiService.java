@@ -2,6 +2,7 @@ package com.sykmm.realestate.api;
 
 import com.sykmm.realestate.models.Category;
 import com.sykmm.realestate.models.Post;
+import com.sykmm.realestate.ui.ListingsFragment;
 
 import java.util.List;
 
@@ -23,4 +24,7 @@ public interface ApiService {
 
     @GET("posts?_embed")
     Call<List<Post>> getPostsByCategory(@Query("categories") int categoryId);
+
+    @GET("wdk-listing")
+    Call<List<ListingsFragment.Listing>> getListings();
 }
