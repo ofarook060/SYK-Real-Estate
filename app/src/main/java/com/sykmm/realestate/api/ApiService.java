@@ -12,13 +12,13 @@ import retrofit2.http.Query;
 
 public interface ApiService {
 
-    @GET("wp-json/wp/v2/posts")
+    @GET("posts?_embed")
     Call<List<Post>> getPosts();
 
     @GET("posts/{id}?_embed")
     Call<Post> getPost(@Path("id") int id);
 
-    @GET("wp-json/wp/v2/categories")
+    @GET("categories")
     Call<List<Category>> getCategories();
 
     @GET("posts?_embed")

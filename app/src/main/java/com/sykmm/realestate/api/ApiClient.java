@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-    private static final String BASE_URL = "https://sykmm.net/";
+    private static final String BASE_URL = "https://sykmm.net/wp-json/wp/v2/";
     private static Retrofit retrofit;
 
     public static ApiService getApi() {
